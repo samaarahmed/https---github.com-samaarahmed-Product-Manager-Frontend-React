@@ -1,7 +1,16 @@
+.table-container{
+    width: 60%;
+    background-color: cadetblue;
+    margin-left: 20%;
+    padding: 5px;
+
+
+}
 tabel{
     width: 100%;
+    margin-left: 20%;
 }
 th,td{text-align: left;
-    border: 1px solid black;
+    border: 3px solid chocolate;
     padding: 5px;
 }

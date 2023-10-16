@@ -1,22 +1,24 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import "./App.css";
 import Product from "./components/Product/Product";
+import { Route, Routes } from "react-router";
+import { BrowserRouter, Link, Switch } from "react-router-dom";
+import Home from "./components/Home/Home";
+import Header from "./components/Home/Header";
 
 function App() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    fetch("https://localhost:8000/product")
-      .then((resp) => resp.json())
-
-      .then((products) => setProducts(products));
-  }, []);
-
   return (
-    <div className="App">
-      <h1>Product Manager</h1>
-      <Product products={products} />
-    </div>
+    <>
+      <BrowserRouter>
+        <Header />
+
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/product" element={<Product />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 

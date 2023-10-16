@@ -1,8 +1,41 @@
 import React from 'react';
-import './Product.css'
+import { useEffect, useState } from "react";
 
-const Product = ({products}) => {
+import '../Product/Product.css'
+import NewProduct from './NewProduct';
+
+const Product = () => {
+  const [products, setProducts] = useState([]);
+
+  const getProducts = async () => {
+    fetch("https://localhost:8000/product")
+      .then((resp) => resp.json())
+
+      .then((products) => setProducts(products));
+  };
+
+  const addNew = (product) => {
+    fetch("https://localhost:8000/product", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify(product)
+
+    })
+    
+    .then(resp => resp.json())
+    .then(product => setProducts([...products, product]));
+    
+ }
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   return (
+    <div className='table-container'>
     <table>  
     <thead>
     <tr>
@@ -15,7 +48,7 @@ const Product = ({products}) => {
   </thead>
   <tbody>
     {products.map((product)=>(
-      <tr>
+      <tr key={product.id}>
         <td> {product.name}</td>
         <td> {product.sku}</td>
         <td> {product.beskrivning}</td>
@@ -27,6 +60,9 @@ const Product = ({products}) => {
     }
   </tbody>
   </table>
+  <NewProduct addNew = {addNew}/>
+
+  </div>
   );
 }
 export default Product;
