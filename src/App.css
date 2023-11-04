@@ -1,5 +1,5 @@
 body{
-  text-align: center;
+text-align: center;
 background-color: cadetblue;
 background-image: url("../src/images/background.jpg");
 background-repeat:no-repeat;
@@ -11,10 +11,15 @@ justify-items: center;
 
 }
 .welcome{
-  background: rgba(13, 118, 118); 
+  background: rgba(7, 188, 188, 0.511); 
   width: 60%;
+  height: 100%;
   margin-left: 20%;
 
+}
+.menu{
+  display: flex;
+  flex-direction: column;
 }
 
 img{

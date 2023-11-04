@@ -1,0 +1,38 @@
+.container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    background-color: rgba(100, 22, 188, 0.726);
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(23, 165, 134, 0.699) ;
+    width: 100%;
+    border-radius: 2%;
+    padding: 10px;
+
+}
+.table{
+    width: 60%;
+    margin-left: 20%;
+    border-radius: 2%;
+    padding: 10px;
+
+}
+
+
+input[type=text]{
+    width: 50%;
+    padding: 12px 20px;
+    margin : 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: inline-block;
+    box-sizing: border-box;
+
+  }
+  label{
+    margin-right: 10px;
+  }

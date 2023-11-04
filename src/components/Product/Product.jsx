@@ -3,9 +3,13 @@ import { useEffect, useState } from "react";
 
 import '../Product/Product.css'
 import NewProduct from './NewProduct';
+import SearchProduct from './SearchProduct';
 
 const Product = () => {
   const [products, setProducts] = useState([]);
+  const [foundProducts, setFoundProducts] = useState([]);
+
+
 
   const getProducts = async () => {
     fetch("https://localhost:8000/product")
@@ -30,13 +34,32 @@ const Product = () => {
     
  }
 
+ const find = (productToFind) => {
+  
+
+  fetch(`https://localhost:8000/product/${productToFind}`,{
+    method:"get",
+  })
+  .then((resp) => resp.json())
+
+  .then(productToFind => setFoundProducts([productToFind]));
+
+  
+
+
+    console.log(productToFind)
+
+
+
+
+}
+
   useEffect(() => {
-    getProducts();
   }, []);
 
   return (
     <div className='table-container'>
-    <table>  
+    <table className='get-products'>  
     <thead>
     <tr>
       <th>Namn</th>
@@ -60,7 +83,32 @@ const Product = () => {
     }
   </tbody>
   </table>
-  <NewProduct addNew = {addNew}/>
+  <table className='found-products'>  
+    <thead>
+    <tr>
+      <th>Namn</th>
+      <th>Sku</th>
+      <th>Beskrivning</th>
+      <th>Bild</th>
+      <th>Pris</th>
+    </tr>
+  </thead>
+  <tbody>
+    {foundProducts.map((found)=>(
+      <tr key={found.id}>
+        <td> {found.name}</td>
+        <td> {found.sku}</td>
+        <td> {found.beskrivning}</td>
+        <td> {found.bild}</td>
+        <td> {found.pris}</td>
+
+      </tr>
+      ))
+    }
+  </tbody>
+  </table>
+
+  <SearchProduct find = {find}/>
 
   </div>
   );

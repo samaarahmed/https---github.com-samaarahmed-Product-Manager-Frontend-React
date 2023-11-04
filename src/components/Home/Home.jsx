@@ -8,17 +8,36 @@ function Home() {
 
   return (
     <div className="container">
-    <body>
+        <div className='home'>
       <div className='welcome'>
-      <h1>Välkommen till Freaky Fashion </h1>
+      <h2>Välkommen till Freaky Fashion </h2>
       <p>Din lokala Fashion butik</p>
       <h2>Produkt Meny</h2>
-        <button>
-        <Link to="/product">Product</Link>
+      <div className='menu'>
+          <button >
+          <Link to="/newProduct">1.Ny Product</Link>
+          </button>
+          <button>
+          <Link to="/searchProduct">2.Sök Product</Link>
+          </button>
+          <button>
+          <Link to="/searchProduct">3.Sök Product</Link>
+          </button>
+          <button>
+          <Link to="/searchProduct">4.Sök Product</Link>
           </button>
 
+          </div>
+          </div>
+          <div className='body'>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur assumenda temporibus doloribus, distinctio quis nobis delectus at placeat vitae molestiae soluta minus nesciunt cupiditate ea adipisci error libero totam nulla.</p>
+          </div>
+
+
       </div>
-    </body>
+      <div></div>
+
+
   <footer>
     <div className="adress">
       <h4>Städafint AB</h4>
